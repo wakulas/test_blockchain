@@ -16,15 +16,12 @@ def get_files():
 
 
 def check_integrity():
-    #1 считать хэш предыдущего блока
-    #2 вычислить хэш предыдущего блока
-    #3 сравнить полученные данные
-    files = get_files()  #[1, 2, 3, 4]
+    files = get_files()
 
     results = []
 
-    for file in files[1:]:   #[2, 3, 4]
-        f = open(blockchain_dir + str(file))  # '2'
+    for file in files[1:]:
+        f = open(blockchain_dir + str(file))
         h = json.load(f)['hash']
 
         prev_file = str(file - 1)
@@ -54,7 +51,6 @@ def write_block(name, amount, to_whom, prev_hash=''):
 
 
 def main():
-    #write_block(name='egen', amount=228, to_whom='quq')
     print(check_integrity())
 
 
